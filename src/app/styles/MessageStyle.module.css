@@ -1,0 +1,18 @@
+.message {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 20px 50px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30em;
+    height: 20em;
+    background-color: brown;
+}
+
+.message button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

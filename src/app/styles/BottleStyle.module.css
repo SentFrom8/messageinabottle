@@ -1,0 +1,7 @@
+.bottle {
+    background-color: blue;
+    width: 20px;
+    height: 75px;
+    position: absolute;
+    transition: right 1s ease, top 1s ease;
+}
