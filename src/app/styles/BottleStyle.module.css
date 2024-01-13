@@ -1,7 +1,23 @@
+@keyframes bobbing {
+    0% {top: -20%; transform: rotate(-20deg);}
+    25% {top: -40%;}
+    50% {top: -30%; transform: rotate(20deg);}
+    75% {top: -50%;}
+    100% {top: -20%; transform: rotate(-20deg);}
+}
+
 .bottle {
     background-color: blue;
     width: 20px;
     height: 75px;
     position: absolute;
-    transition: right 1s ease, top 1s ease;
+    
+    animation-name: bobbing;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.bottle:hover {
+    margin-top: -10px;
+    cursor: pointer;
 }

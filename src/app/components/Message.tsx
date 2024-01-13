@@ -1,17 +1,16 @@
 import React, { useContext, useState } from 'react'
 import MessageStyle from '../styles/MessageStyle.module.css'
-import { MessageContext } from '../context/messageContext';
+import { BottleMessage } from '@/utils/types'
 
 type MessageProps = {
-    text: string,
+   message: BottleMessage,
 }
 
 export default function Message(props: MessageProps) {
-    const {visible,setVisible} = useContext(MessageContext)
     return (
         <div className={MessageStyle.message}>
-            <button onClick={() => setVisible(!visible)}>X</button>
-            {props.text}
+            {props.message.message}
         </div>
     )
+    
 }
