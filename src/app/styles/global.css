@@ -1,4 +1,16 @@
+@font-face {
+    font-family: 'Vengeance'; 
+    src: url('../fonts/Vengeance.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+  }
+
 * {
     margin: 0;
     padding: 0;
+}
+
+body {
+  /*background-color: #F2DDC0;*/
+  background-color: #F2DDC0;
 }

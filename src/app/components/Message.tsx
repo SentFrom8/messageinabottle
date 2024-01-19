@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import MessageStyle from '../styles/MessageStyle.module.css'
-import { BottleMessage } from '@/utils/types'
+import { BottleMessage } from '@/app/utils/types'
 
 type MessageProps = {
    message: BottleMessage,

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import SeaStyle from '../styles/SeaStyle.module.css'
 import { Bottle } from './Bottle'
-import { getRatedMessages } from '@/utils/arrayOperations'
+import { getRatedMessages } from '@/app/utils/arrayOperations'
 import { useMessageContext } from '../context/messageContext'
-import { BottleMessage } from '@/utils/types'
+import { BottleMessage } from '@/app/utils/types'
+import { SeaSvg } from './SeaSvg'
 
 export const Sea = () => {
   const { messages } = useMessageContext();
@@ -15,9 +16,7 @@ export const Sea = () => {
   },[messages]);
   return (
     <div className={SeaStyle.sea}>
-        {randomMessages.length ? randomMessages.map((message) => (
-            message ? <Bottle message={message} position={Math.floor(Math.random()*100)} key={message.id}/> : null
-        )) : null}
+      {randomMessages.length? <SeaSvg messages={randomMessages}/> : null}
     </div>
   )
 }

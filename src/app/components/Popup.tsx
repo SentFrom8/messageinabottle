@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import PopupStyle from '../styles/PopupStyle.module.css'
+import { createPortal } from 'react-dom'
 
 interface PopupProps {
     visible: boolean,
@@ -8,7 +9,11 @@ interface PopupProps {
 }
 
 export const Popup = (props : PopupProps ) => {
-  return (
-    props.visible ? <div className={PopupStyle.popup} onClick={() => props.setVisible(false)}>{props.children}</div> : null
-  )
+  const element = document.getElementById("portal-root");
+  if (props.visible && element) {
+    return createPortal(
+    <div className={PopupStyle.popup} onClick={() => props.setVisible(false)}>{props.children}</div>,
+    element
+  )}
+  
 }

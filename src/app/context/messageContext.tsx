@@ -1,7 +1,7 @@
 'use client'
 
 import { SetStateAction, createContext, useContext, useState } from "react";
-import { BottleMessage } from "@/utils/types";
+import { BottleMessage } from "@/app/utils/types";
 
 type MessageContextProviderProps = {
     children: React.ReactNode
