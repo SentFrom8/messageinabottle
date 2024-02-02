@@ -1,0 +1,30 @@
+.rating {
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating button {
+    background-color: transparent;
+    font-size: 1.5rem;
+    border: none;
+    padding: 0;
+}
+
+
+.thumb {
+    display: flex;
+    gap: 5px;
+    color: inherit;
+    cursor: pointer;
+}
+
+.thumb:hover {
+    color: rgba(0,0,0,0.6);;
+    
+}
+
+.rated {
+    color: rgb(0,0,0);
+}

@@ -1,9 +1,14 @@
 @font-face {
-    font-family: 'Vengeance'; 
-    src: url('../fonts/Vengeance.ttf') format('truetype'); 
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family: 'Vengeance'; 
+  src: url('../fonts/Vengeance.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --faded-text-color: #5C4033;
+}
+
 
 * {
     margin: 0;
@@ -11,6 +16,5 @@
 }
 
 body {
-  /*background-color: #F2DDC0;*/
-  background-color: #F2DDC0;
+  background-color: #ebd5b3;
 }

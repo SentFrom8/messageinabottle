@@ -1,23 +1,19 @@
-'use client'
-
 import MainAreaStyle from './styles/MainAreaStyle.module.css'
-import { Sea } from './components/Sea';
-import { useEffect, useState } from 'react';
-import { useFetchMessages } from '@/app/utils/apiLogic';
+import PopupButton from './components/Button/PopupButton';
+import ButtonStyle from './components/Button/ButtonStyle.module.css'
+import PaperInkSvg from './components/SVGComponents/PaperInkSvg';
+import SeaDataProvider from './components/Sea/SeaDataProvider';
 
 export default function Home() {
-  const { fetchMessages } = useFetchMessages();
-
-  useEffect(() => {
-    fetchMessages;
-  }, [])
 
   return (
     <div className={MainAreaStyle.mainarea} id='portal-root'>
       <h1 className={MainAreaStyle.header}>Message in a Bottle</h1>
-      <p className={MainAreaStyle.text}>Write your message in the area below, or read messages from others!</p>
-      <p className={MainAreaStyle.text}>You can make your message visible right away, or make it sail across the virtual ocean!</p>
-      <Sea/>
+      <p className={MainAreaStyle.text}>Read a note, leave a note
+      <PopupButton /></p>
+      <p className={MainAreaStyle.text}>Because life is too short for unread messages!</p>
+      <p className={MainAreaStyle.text}>Click on any of the bottles below</p>
+      <SeaDataProvider />
     </div>
   )
 }

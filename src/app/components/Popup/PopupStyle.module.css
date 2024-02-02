@@ -7,4 +7,6 @@
     display: flex;
     background-color: rgba(0, 0, 0, 0.35);
     z-index: 20;
+    align-items: center;
+    justify-content: center;
 }

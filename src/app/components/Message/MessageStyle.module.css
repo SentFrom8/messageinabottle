@@ -1,0 +1,59 @@
+.message {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 700px;
+}
+
+.closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.text {
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    height: 70%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 15px;
+    width: 75%;
+}
+
+.text p {
+    font-size: 1.7rem;
+    font-family:'Vengeance', sans-serif;
+    font-weight: 700;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--faded-text-color);
+}
+
+.closeButton {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 1.5rem;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    color: #5C4033;
+    cursor: pointer;
+}
+
+.closeButton:hover {
+    color: #29170e;
+}
