@@ -1,16 +1,3 @@
-.message {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 700px;
-}
-
-.closeButton {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 .text {
     position: absolute;
     left: 50%;
@@ -28,7 +15,7 @@
     font-size: 1.7rem;
     font-family:'Vengeance', sans-serif;
     font-weight: 700;
-    overflow: hidden;
+    overflow-y: auto;
     overflow-wrap: break-word;
     hyphens: auto;
 }
@@ -40,20 +27,4 @@
     justify-content: space-between;
     align-items: center;
     color: var(--faded-text-color);
-}
-
-.closeButton {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    font-size: 1.5rem;
-    border: none;
-    padding: 0;
-    background-color: transparent;
-    color: #5C4033;
-    cursor: pointer;
-}
-
-.closeButton:hover {
-    color: #29170e;
 }

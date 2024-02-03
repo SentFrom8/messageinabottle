@@ -1,11 +1,8 @@
-import { db } from '@/app/config/firebase';
-import { getDocs, collection, addDoc,QuerySnapshot, DocumentData } from 'firebase/firestore';
-import { useMessageContext } from '@/app/context/messageContext';
-import { BottleMessage, BottleMessageSubmit } from './types';
-import { useEffect } from 'react';
-import { getRatedMessages } from './arrayOperations';
-import { Timestamp } from 'firebase/firestore';
+import { db } from "@/app/config/firebase";
+import { getDocs, collection ,QuerySnapshot, DocumentData } from "firebase/firestore";
+import { BottleMessage } from "./types";
 
+// eslint-disable-next-line no-unused-vars
 const fakeData = [
     { id: "abcde12345", date: new Date(), message: "Expect the best. Prepare for the worst. Capitalize on what comes.", likes: 5, dislikes: 2 },
     { id: "fghij67890", date: new Date(), message: "Success is the sum of small efforts, repeated day in and day out.", likes: 8, dislikes: 3 },
@@ -39,45 +36,10 @@ const fakeData = [
     { id: "tuvwx67890", date: new Date(), message: "The only thing standing between you and your goal is the story you keep telling yourself as to why you can't achieve it.", likes: 0, dislikes: 0 },
 ];
 
-
-/*export const useFetchMessages = () => {
-    const { messages, setMessages } = useMessageContext();
-    const messagesCollection = collection(db, "messages");
-    var requests = 0;
-    const fetchMessages = async () => {
-        if (requests <= 2) {
-            try {
-                console.log("Fetching data");
-                const data = await getDocs(messagesCollection)
-                setMessages(queryToMessage(data));
-
-                /*setMessages(fakeData.map((message) => ({
-                    ...message, date: Timestamp.fromDate(new Date)
-            })))
-        }
-            catch (err) {
-                console.log(err);
-        }
-        }
-    };
-
-    return {
-        fetchMessages,
-    }
-}*/
-
 export const fetchMessages = async () => {
     const messagesCollection = collection(db, "messages");
     const data = await getDocs(messagesCollection);
     return queryToMessage(data);
-}
-
-export const submitMessage = async (message: BottleMessageSubmit) => {
-    try {
-        const newDoc = await addDoc(collection(db, "messages"), message);
-        return true
-    }
-    catch (err) {return false}
 };
 
 export const queryToMessage = (queryResult: QuerySnapshot<DocumentData, DocumentData>) => {
@@ -89,4 +51,4 @@ export const queryToMessage = (queryResult: QuerySnapshot<DocumentData, Document
         dislikes: doc.data().dislikes,
     }));
     return filteredData;
-}
+};

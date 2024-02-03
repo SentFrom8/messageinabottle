@@ -1,0 +1,10 @@
+.formInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.textAreaContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}

@@ -1,9 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react'
 import MessageStyle from './MessageStyle.module.css'
-import ParchmentSvg from '../SVGComponents/ParchmentSvg'
-import PopupBackdrop from '../Popup/PopupBackdrop'
-import { v4 as uuidv4 } from 'uuid'
 import Modal from '../Modal/Modal'
+import Parchment from '../Parchment/Parchment'
 
 type TemporaryMessageProps = {
     text: string,
@@ -30,13 +28,12 @@ const TemporaryMessage = (props: TemporaryMessageProps) => {
 
     return (
         <Modal visible={visible} setVisible={setVisible}>
-            <div className={MessageStyle.message}>
-                <ParchmentSvg uniqueId={"jdsondoandsandjosnad"} />
+            <Parchment setVisible={setVisible}>
                 <div className={MessageStyle.text}>
                     <p>{props.text}</p>
                     {props.children}
                 </div>
-            </div>
+            </Parchment>
         </Modal>
     )
 }

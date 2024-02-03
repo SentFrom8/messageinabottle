@@ -1,7 +1,7 @@
-import { ReactNode, useEffect, useRef } from 'react'
-import ModalStyle from './ModalStyle.module.css'
-import PopupBackdrop from '../Popup/PopupBackdrop'
-import { createPortal } from 'react-dom'
+import { ReactNode, useEffect, useRef } from "react";
+import ModalStyle from "./ModalStyle.module.css";
+import PopupBackdrop from "../Popup/PopupBackdrop";
+import { createPortal } from "react-dom";
 
 type ModalProps = {
     visible: boolean,
@@ -11,17 +11,17 @@ type ModalProps = {
 
 const Modal = (props: ModalProps) => {
 
-    const dialogRef = useRef<HTMLDialogElement>(null)
+    const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(() => {
-      if (dialogRef.current) {
-        if (props.visible) {
-            dialogRef.current.showModal();
-        } else {
-            dialogRef.current.close();
+        if (dialogRef.current) {
+            if (props.visible) {
+                dialogRef.current.showModal();
+            } else {
+                dialogRef.current.close();
+            }
         }
-      }
-    }, [props.visible])
+    }, [props.visible]);
     
 
 
@@ -31,7 +31,7 @@ const Modal = (props: ModalProps) => {
                 {props.children}
             </PopupBackdrop>
         </dialog>
-        , document.body) : null
-}
+        , document.body) : null;
+};
 
-export default Modal
+export default Modal;

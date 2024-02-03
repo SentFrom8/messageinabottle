@@ -1,0 +1,22 @@
+.parchment {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 700px;
+}
+
+.closeButton {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 1.5rem;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    color: var(--faded-text-color);
+    cursor: pointer;
+}
+
+.closeButton:hover {
+    color: rgb(0,0,0);
+}
