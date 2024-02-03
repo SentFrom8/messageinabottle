@@ -1,8 +1,8 @@
-import MessageStyle from './MessageStyle.module.css'
-import { BottleMessage } from '@/app/utils/types'
-import Rating from '../Rating/Rating'
-import { Timestamp } from 'firebase/firestore'
-import Parchment from '../Parchment/Parchment'
+import MessageStyle from "./MessageStyle.module.css";
+import { BottleMessage } from "@/app/utils/types";
+import Rating from "../Rating/Rating";
+import { Timestamp } from "firebase/firestore";
+import Parchment from "../Parchment/Parchment";
 
 type MessageProps = {
     message: BottleMessage,
@@ -21,8 +21,8 @@ const Message = (props: MessageProps) => {
                 </div>
             </div>
         </Parchment>
-    )
+    );
     
-}
+};
 
 export default Message;

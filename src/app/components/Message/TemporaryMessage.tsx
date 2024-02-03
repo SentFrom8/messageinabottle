@@ -1,7 +1,7 @@
-import { ReactNode, useEffect, useState } from 'react'
-import MessageStyle from './MessageStyle.module.css'
-import Modal from '../Modal/Modal'
-import Parchment from '../Parchment/Parchment'
+import { ReactNode, useEffect, useState } from "react";
+import MessageStyle from "./MessageStyle.module.css";
+import Modal from "../Modal/Modal";
+import Parchment from "../Parchment/Parchment";
 
 type TemporaryMessageProps = {
     text: string,
@@ -12,7 +12,7 @@ type TemporaryMessageProps = {
 
 const TemporaryMessage = (props: TemporaryMessageProps) => {
 
-    const [visible, setVisible] = useState(true)
+    const [visible, setVisible] = useState(true);
 
     useEffect(() => {
         setTimeout(() => {
@@ -20,10 +20,10 @@ const TemporaryMessage = (props: TemporaryMessageProps) => {
             if (props.onExpire) {
                 props.onExpire();
             }
-        }, props.duration)
+        }, props.duration);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, []);
     
 
     return (
@@ -35,7 +35,7 @@ const TemporaryMessage = (props: TemporaryMessageProps) => {
                 </div>
             </Parchment>
         </Modal>
-    )
-}
+    );
+};
 
-export default TemporaryMessage
+export default TemporaryMessage;
