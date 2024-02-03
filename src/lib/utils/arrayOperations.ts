@@ -2,14 +2,12 @@ import { DocumentData, QuerySnapshot } from "firebase/firestore";
 import { BottleMessage } from "./types";
 
 const getRandomElements = <T>(array: T[], messageAmount: number) : T[] => {
-    if (messageAmount > 0 && Number.isInteger(messageAmount)) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array.slice(0, messageAmount);
+    if (!(messageAmount > 0 && Number.isInteger(messageAmount))) {return [];}
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
-    return [];
+    return array.slice(0, messageAmount);
 };
 
 export const getRatedMessages = (messageList: BottleMessage[], messageAmount: number, opened: Set<string>) => {

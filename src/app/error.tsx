@@ -1,7 +1,7 @@
 "use client";
  
 import { useEffect } from "react";
-import ButtonStyle from "./components/Button/ButtonStyle.module.css";
+import ButtonStyle from "@/components/Button/ButtonStyle.module.css";
 import ErrorStyle from "./styles/ErrorStyle.module.css";
  
 export default function Error({

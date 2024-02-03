@@ -1,6 +1,6 @@
 import MainAreaStyle from "./styles/MainAreaStyle.module.css";
-import PopupButton from "./components/Button/PopupButton";
-import SeaDataProvider from "./components/Sea/SeaDataProvider";
+import PopupButton from "../components/Button/PopupButton";
+import SeaDataProvider from "../components/Sea/SeaDataProvider";
 
 export default function Home() {
 

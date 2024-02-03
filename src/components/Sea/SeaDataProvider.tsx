@@ -1,8 +1,8 @@
 "use client";
 
-import { orderedQuery } from "@/app/config/firebase";
-import { queryToMessage } from "@/app/utils/arrayOperations";
-import { BottleMessage } from "@/app/utils/types";
+import { orderedQuery } from "@/lib/firebase/firebase";
+import { queryToMessage } from "@/lib/utils/arrayOperations";
+import { BottleMessage } from "@/lib/utils/types";
 import { onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Sea from "./Sea";

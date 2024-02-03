@@ -7,16 +7,6 @@ import { collection, getFirestore, orderBy, query } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-/*const firebaseConfig = {
-  apiKey: "AIzaSyC9tisigJEIcqkTOlO2lMZdjupj-gs7e8I",
-  authDomain: "messageinabottle-80545.firebaseapp.com",
-  projectId: "messageinabottle-80545",
-  storageBucket: "messageinabottle-80545.appspot.com",
-  messagingSenderId: "727823511636",
-  appId: "1:727823511636:web:4e5337bfd58f1eaa78fdc1",
-  measurementId: "G-72HSKHVMSW"
-};*/
-
 export const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,

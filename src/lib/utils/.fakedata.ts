@@ -1,7 +1,3 @@
-import { db } from "@/app/config/firebase";
-import { getDocs, collection ,QuerySnapshot, DocumentData } from "firebase/firestore";
-import { BottleMessage } from "./types";
-
 // eslint-disable-next-line no-unused-vars
 const fakeData = [
     { id: "abcde12345", date: new Date(), message: "Expect the best. Prepare for the worst. Capitalize on what comes.", likes: 5, dislikes: 2 },
@@ -35,20 +31,3 @@ const fakeData = [
     { id: "opqrs12345", date: new Date(), message: "It's not what you look at that matters, it's what you see.", likes: 0, dislikes: 0 },
     { id: "tuvwx67890", date: new Date(), message: "The only thing standing between you and your goal is the story you keep telling yourself as to why you can't achieve it.", likes: 0, dislikes: 0 },
 ];
-
-export const fetchMessages = async () => {
-    const messagesCollection = collection(db, "messages");
-    const data = await getDocs(messagesCollection);
-    return queryToMessage(data);
-};
-
-export const queryToMessage = (queryResult: QuerySnapshot<DocumentData, DocumentData>) => {
-    const filteredData: BottleMessage[] = queryResult.docs.map((doc) => ({
-        id: doc.id,
-        message: doc.data().message,
-        date: doc.data().date,
-        likes: doc.data().likes,
-        dislikes: doc.data().dislikes,
-    }));
-    return filteredData;
-};

@@ -1,5 +1,5 @@
 import MessageStyle from "./MessageStyle.module.css";
-import { BottleMessage } from "@/app/utils/types";
+import { BottleMessage } from "@/lib/utils/types";
 import Rating from "../Rating/Rating";
 import { Timestamp } from "firebase/firestore";
 import Parchment from "../Parchment/Parchment";

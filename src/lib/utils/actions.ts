@@ -1,39 +1,42 @@
 "use server";
 
 import { Timestamp, addDoc, getDocs, doc, updateDoc } from "firebase/firestore";
-import { db } from "../config/firebase";
+import { db } from "../firebase/firebase";
 import { queryToMessage } from "./arrayOperations";
 import { BottleMessage, FormResult } from "./types";
-import { messagesCollection } from "../config/firebase";
+import { messagesCollection } from "../firebase/firebase";
+
+const regex = /^[a-zA-Z0-9\s!@#$%^&*()_+{}\\[\]:;<>,.?~\\/-]+$/;
 
 
 export async function submitMessage (prevState: FormResult, formData: FormData) {
 
     const text = formData.get("messageInput") as string;
 
-    if (text) {
-        const message = { date: Timestamp.fromDate(new Date()), message: text, likes: 0, dislikes: 0 };
-        try {
-            await addDoc(messagesCollection, message);
-            return {
-                text: "",
-                success: true,
-                error: undefined
-            };
-        } catch (error) {
-            console.log(error);
-            return {
-                text: text,
-                success: false,
-                error: "Failed submit, please try again"
-            };
-        }  
+    if (!(text && regex.test(text))) {
+        return {
+            text: "",
+            success: false,
+            error: "Message can only contain letters of the English alphabet"
+        };
     }
-    return {
-        text: "",
-        success: false,
-        error: "Wrong input, please check your message"
-    };
+
+    const message = { date: Timestamp.fromDate(new Date()), message: text, likes: 0, dislikes: 0 };
+    try {
+        await addDoc(messagesCollection, message);
+        return {
+            text: "",
+            success: true,
+            error: undefined
+        };
+    } catch (error) {
+        console.log(error);
+        return {
+            text: text,
+            success: false,
+            error: "Failed submit, please try again"
+        };
+    }  
 }
 
 export async function fetchMessages()  {
