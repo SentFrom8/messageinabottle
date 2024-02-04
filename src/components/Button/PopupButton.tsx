@@ -1,12 +1,16 @@
 "use client";
 
-import{ useState } from "react";
+import{ ReactNode, useState } from "react";
 import ButtonStyle from "./ButtonStyle.module.css";
 import InputArea from "../Message/InputArea";
 import Modal from "../Modal/Modal";
 import PaperInkSvg from "../SVGComponents/PaperInkSvg";
 
-const PopupButton = () => {
+type PopupButtonProps = {
+    children?: ReactNode,
+}
+
+const PopupButton = (props: PopupButtonProps) => {
 
     const [visible, setVisible] = useState(false);
 
@@ -16,6 +20,7 @@ const PopupButton = () => {
                 className={ButtonStyle.enterMessageButton}
                 onMouseUp={() => setVisible(true)}
                 onKeyUp={e => {if (e.key === "Enter") {setVisible(true);}}}>
+                {props.children}
                 <PaperInkSvg />
             </button>
             <Modal visible={visible} setVisible={() => setVisible(false)}>

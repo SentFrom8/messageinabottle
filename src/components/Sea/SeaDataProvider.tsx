@@ -27,7 +27,7 @@ const SeaDataProvider = () => {
 
 
     return (
-        <Sea messages={messages.slice(0,5)}/>
+        <Sea messages={messages}/>
     );
 };
 

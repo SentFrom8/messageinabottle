@@ -13,7 +13,7 @@
 
 .text p {
     font-size: 1.7rem;
-    font-family:'Vengeance', sans-serif;
+    font-family: var(--font-handwriting), 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 700;
     overflow-y: auto;
     overflow-wrap: break-word;

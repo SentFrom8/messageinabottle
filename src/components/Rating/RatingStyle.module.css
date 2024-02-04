@@ -21,10 +21,15 @@
 }
 
 .thumb:hover {
-    color: rgba(0,0,0,0.6);;
+    color: rgba(0,0,0,0.6);
     
 }
 
 .rated {
     color: rgb(0,0,0);
+}
+
+.pending {
+    color: rgba(0,0,0,0.35);
+    pointer-events: none;
 }

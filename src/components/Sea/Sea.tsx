@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import SeaStyle from "./SeaStyle.module.css";
 import Bottle from "../Bottle/Bottle";
 import UpperWaveSvg from "./UpperWaveSvg";
 import LowerWaveSvg from "./LowerWaveSvg";
@@ -43,30 +42,29 @@ const Sea =  (props: SeaProps) => {
     }, [props.messages, openedMessages]);
   
     //getRatedMessages should take the length of the bottle array
-    return (
-        <div className={SeaStyle.sea}>
-            <SeaSvg>
-                {randomMessagesId.length ? <>
-                    <UpperWaveSvg>
-                        <Bottle {...bottles[0]} message={props.messages[randomMessagesId[0]]} setOpened={setOpenedMessages} />
-                        <Bottle {...bottles[1]} message={props.messages[randomMessagesId[1]]} setOpened={setOpenedMessages} />
-                    </UpperWaveSvg>
+    return (<>
+        <SeaSvg>
+            {randomMessagesId.length ? <>
+                <UpperWaveSvg>
+                    <Bottle {...bottles[0]} message={props.messages[randomMessagesId[0]]} setOpened={setOpenedMessages} />
+                    <Bottle {...bottles[1]} message={props.messages[randomMessagesId[1]]} setOpened={setOpenedMessages} />
+                </UpperWaveSvg>
 
-                    <LowerWaveSvg>
-                        <Bottle {...bottles[2]} message={props.messages[randomMessagesId[2]]} setOpened={setOpenedMessages} />
-                        <Bottle {...bottles[3]} message={props.messages[randomMessagesId[3]]} setOpened={setOpenedMessages} />
-                    </LowerWaveSvg>
-                </> : <>
-                    <UpperWaveSvg />
-                    <LowerWaveSvg />
-                </>}
-                <RefreshButtonSvg
-                    onClick={() => (setRandomMessagesId(getRatedMessages(props.messages, 4, openedMessages)))}
-                    onKeyUp={e => {if (e.key === "Enter") {setRandomMessagesId(getRatedMessages(props.messages, 4, openedMessages));}}}
-                />
-            </SeaSvg>
-            {messagesRead && <TemporaryMessage text="Congratulations! You reached the last message. Messages will now repeat" duration={3000} onExpire={() => setMessagesRead(false)}/>}
-        </div>
+                <LowerWaveSvg>
+                    <Bottle {...bottles[2]} message={props.messages[randomMessagesId[2]]} setOpened={setOpenedMessages} />
+                    <Bottle {...bottles[3]} message={props.messages[randomMessagesId[3]]} setOpened={setOpenedMessages} />
+                </LowerWaveSvg>
+            </> : <>
+                <UpperWaveSvg />
+                <LowerWaveSvg />
+            </>}
+            <RefreshButtonSvg
+                onClick={() => (setRandomMessagesId(getRatedMessages(props.messages, 4, openedMessages)))}
+                onKeyUp={e => {if (e.key === "Enter") {setRandomMessagesId(getRatedMessages(props.messages, 4, openedMessages));}}}
+            />
+        </SeaSvg>
+        {messagesRead && <TemporaryMessage text="Congratulations! You reached the last message. Messages will now repeat" duration={3000} onExpire={() => setMessagesRead(false)}/>}
+    </>
     );
 };
 

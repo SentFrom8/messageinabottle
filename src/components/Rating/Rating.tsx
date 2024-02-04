@@ -2,93 +2,79 @@ import { BottleMessage } from "@/lib/utils/types";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RatingStyle from "./RatingStyle.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { updateMessage } from "@/lib/utils/actions";
 
 type RatingProps = {
     message: BottleMessage
 }
 
-type RatingType = "liked" | "disliked" | "unrated" | "initial";
+type RatingType = "liked" | "disliked" | "unrated";
 
 
 
 const Rating = (props: RatingProps) => {
 
-    const [rating, setRating] = useState<RatingType>("initial");
-
-    const [ratingPrevious, setratingPrevious] = useState<RatingType>("initial");
+    const [rating, setRating] = useState<RatingType>("unrated");
 
     const [likesOptimistic, setLikesOptimistic] = useState(props.message.likes);
 
     const [dislikesOptimistic, setDislikesOptimistic] = useState(props.message.dislikes);
 
-    const handleClick = (rate: RatingType) => {
-        setratingPrevious(rating);
-        if (rate === rating) {
-            setRating("unrated");
-        }
-        else {
-            setRating(rate);
-        }
-
-    };
-
-    //if API fails to update, reverts state to previous value
-    const handleError = async (message: BottleMessage) => {
-        const updateResult = await updateMessage(message);
-        if (!updateResult) {
-            setLikesOptimistic(props.message.likes);
-            setDislikesOptimistic(props.message.dislikes);
-            setRating(ratingPrevious);
-        }
-    };
+    const [pending, setPending] = useState(false);
     
 
-    //if rating and previous rating are same, it means the api call failed (unless it's initial)
-    //in this case api will not be called again
-    useEffect(() => {
-        if (rating !== "initial" && rating !== ratingPrevious) {
-            var likes = props.message.likes;
-            var dislikes = props.message.dislikes;
-
-            if (ratingPrevious === "disliked") {
-                dislikes = props.message.dislikes - 1;
-            }
-
-            if (ratingPrevious === "liked") {
-                likes = props.message.likes - 1;
-            }
-
-            switch (rating) {
-                case "liked":
-                    likes += 1;
-                    
-                    break;
-                case "disliked":
-                    dislikes += 1;
-                    
-                    break;
-            }
-            setLikesOptimistic(likes);
-            setDislikesOptimistic(dislikes);
-
-            handleError({ ...props.message, likes: likes, dislikes: dislikes });
+    const handleClick = async (rate: RatingType) => {
+        setPending(true);
+        let likes = props.message.likes;
+        let dislikes = props.message.dislikes;
+        
+        let unrated = false;
+        if (rating === "disliked") {
+            dislikes -= 1;
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rating]);
+
+        if (rating === "liked") {
+            likes -= 1;
+        }
+
+        switch (rate) {
+            case rating: 
+                unrated = true;
+                break;
+            case "liked": 
+                likes +=1;
+                break;
+            case "disliked": 
+                dislikes+=1;
+                break;
+        }
+        setLikesOptimistic(likes);
+        setDislikesOptimistic(dislikes);
+
+        const updateResult = await updateMessage({ ...props.message, likes: likes, dislikes: dislikes });
+        if (updateResult) {
+            setRating(unrated ? "unrated" : rate);
+        } else {
+            setLikesOptimistic(props.message.likes);
+            setDislikesOptimistic(props.message.dislikes);
+        }
+        setPending(false);
+    };
 
     return (
         <div className={RatingStyle.rating}>
-            <button className={`${RatingStyle.thumb} ${rating === "liked" && RatingStyle.rated}`} 
+            <button className={`${RatingStyle.thumb} ${rating === "liked" && RatingStyle.rated} ${pending && RatingStyle.pending}`} 
                 onClick={() => handleClick("liked")}
-                onKeyUp={e => {if (e.key === "Enter") {handleClick("liked");}}}>
+                onKeyUp={e => {if (e.key === "Enter") {handleClick("liked");}}}
+                disabled={pending}>
                 <FontAwesomeIcon icon={faThumbsUp}/>
                 {likesOptimistic}
             </button>
-            <button className={`${RatingStyle.thumb} ${rating === "disliked" && RatingStyle.rated}`} 
+            <button className={`${RatingStyle.thumb} ${rating === "disliked" && RatingStyle.rated} ${pending && RatingStyle.pending}`} 
                 onClick={() => handleClick("disliked")}
-                onKeyUp={e => {if (e.key === "Enter") {handleClick("disliked");}}}>
+                onKeyUp={e => {if (e.key === "Enter") {handleClick("disliked");}}}
+                disabled={pending}>
                 <FontAwesomeIcon icon={faThumbsDown}/>
                 {dislikesOptimistic}
             </button>

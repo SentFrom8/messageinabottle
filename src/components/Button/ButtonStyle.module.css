@@ -29,5 +29,11 @@
     background-color: transparent;
     border: none;
     padding: 0;
-    width: 3em;
+    cursor: pointer;
+    text-wrap: nowrap;
+    display: flex;
+}
+
+.enterMessageButton svg {
+    width: 1.2em;
 }
