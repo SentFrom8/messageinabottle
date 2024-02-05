@@ -29,8 +29,8 @@ const getCategorizedMessages = (messages: BottleMessage[]) => {
         }
     })
 
-    return {likedMessages, unratedMessages, dislikedMessages}
-}
+    return { likedMessages, unratedMessages, dislikedMessages };
+};
 
 export const getRatedMessages = (messageList: BottleMessage[], messageAmount: number, opened: Set<string>) => {
     
@@ -47,7 +47,7 @@ export const getRatedMessages = (messageList: BottleMessage[], messageAmount: nu
     const ratedAmount = Math.floor(messageAmount/3);
     const unratedAmount = ratedAmount + messageAmount % 3;
 
-    const { likedMessages, unratedMessages, dislikedMessages } = getCategorizedMessages(newMessages)
+    const { likedMessages, unratedMessages, dislikedMessages } = getCategorizedMessages(newMessages);
     
     const randomLiked = getRandomElements(likedMessages, ratedAmount);
     const randomDisliked = getRandomElements(dislikedMessages, ratedAmount);
@@ -64,7 +64,7 @@ export const getRatedMessages = (messageList: BottleMessage[], messageAmount: nu
 
     const failedMessages = getRandomElements(remainingNewMessages, failedAmount);
 
-    failedMessages.map(message => randomMessages.add(message.id))
+    failedMessages.map(message => randomMessages.add(message.id));
 
     return findIndices(messageList, randomMessages);
 };

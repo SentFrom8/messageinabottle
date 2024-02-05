@@ -5,7 +5,6 @@
     gap: 60px;
     width: 100%;
     height: 100vh;
-    justify-content:space-evenly;
 }
 
 .mainarea * {
@@ -17,8 +16,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 40%;
+    width: 600px;
+    max-width: 80%;
     gap: 5px;
+    padding-top: 2rem;
 }
 
 .header p {
@@ -42,10 +43,13 @@
 }
 
 .main {
-    width: 35%;
+    width: clamp(30%, 500px, 90%);
     display: flex;
+    justify-content: space-evenly;
     flex-direction: column;
     gap: 30px;
+    padding-bottom: 2rem;
+    flex: 1
 }
 
 .main * {
