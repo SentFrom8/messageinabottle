@@ -23,7 +23,7 @@ const ModalButton = (props: ModalButtonProps) => {
                 {props.children}
                 <PaperInkSvg />
             </button>
-            <Modal visible={visible} setVisible={() => setVisible(false)} name="Popup button modal">
+            <Modal visible={visible} setVisible={() => setVisible(false)}>
                 <InputArea visible={visible} setVisible={setVisible}/>
             </Modal>
         </>

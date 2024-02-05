@@ -19,15 +19,15 @@ const getCategorizedMessages = (messages: BottleMessage[]) => {
 
     messages.map(message => {
         if (message.likes > message.dislikes) {
-            likedMessages.push(message)
+            likedMessages.push(message);
         }
         if (message.likes < message.dislikes) {
-            dislikedMessages.push(message)
+            dislikedMessages.push(message);
         }
         if (message.likes === message.dislikes) {
-            unratedMessages.push(message)
+            unratedMessages.push(message);
         }
-    })
+    });
 
     return { likedMessages, unratedMessages, dislikedMessages };
 };

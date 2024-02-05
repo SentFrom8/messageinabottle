@@ -6,7 +6,6 @@ type ModalProps = {
     visible: boolean,
     setVisible: Function,
     children: ReactNode,
-    name?: string,
 }
 
 const Modal = (props: ModalProps) => {
@@ -14,7 +13,6 @@ const Modal = (props: ModalProps) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(() => {
-        console.log(`Modal useEffect ran:  ${props.name} visible: ${props.visible}`);
         if (dialogRef.current) {
             if (props.visible && !dialogRef.current.open) {
                 dialogRef.current.showModal();

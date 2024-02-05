@@ -6,7 +6,7 @@ import { useFormState } from "react-dom";
 import SubmitButton from "../Button/SubmitButton";
 import TextArea from "../TextArea/TextArea";
 import TemporaryMessage from "./TemporaryMessage";
-import MessageStyle from "./MessageStyle.module.css"
+import MessageStyle from "./MessageStyle.module.css";
 
 type InputAreaProps = {
   setVisible: Function;
@@ -39,9 +39,9 @@ const InputArea = (props: InputAreaProps) => {
     }, [formState]);
 
     useEffect(() => {
-      console.log("Success changed: "+ success)
+        console.log("Success changed: "+ success);
 
-    }, [success])
+    }, [success]);
     return (
         <Parchment setVisible={props.setVisible}>
             <form ref={formRef} className={MessageStyle.text} action={formAction}>
