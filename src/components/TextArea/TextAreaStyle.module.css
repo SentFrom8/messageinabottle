@@ -2,7 +2,7 @@
     background-color: transparent;
     border: none;
     font-size: 1.7rem;
-    font-family:'Vengeance', sans-serif;
+    font-family: var(--font-handwriting);
     font-weight: 700;
     width: 100%;
     resize: none;

@@ -6,7 +6,7 @@ import { queryToMessage } from "./arrayOperations";
 import { BottleMessage, FormResult } from "./types";
 import { messagesCollection } from "../firebase/firebase";
 
-const regex = /^[a-zA-Z0-9\s!@#$%^&*()_+{}\\[\]:;<>,.?~\\/-]+$/;
+const regex = /^[a-zA-Z0-9\s!@#$%^&*()_+=|{}\\[\]:;<>,.'"`~?~\\/-]+$/;
 
 
 export async function submitMessage (prevState: FormResult, formData: FormData) {

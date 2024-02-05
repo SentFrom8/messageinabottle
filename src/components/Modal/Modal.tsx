@@ -1,12 +1,12 @@
 import { ReactNode, useEffect, useRef } from "react";
 import ModalStyle from "./ModalStyle.module.css";
-import PopupBackdrop from "../Popup/PopupBackdrop";
 import { createPortal } from "react-dom";
 
 type ModalProps = {
     visible: boolean,
     setVisible: Function,
     children: ReactNode,
+    name?: string,
 }
 
 const Modal = (props: ModalProps) => {
@@ -14,8 +14,9 @@ const Modal = (props: ModalProps) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     useEffect(() => {
+        console.log(`Modal useEffect ran:  ${props.name} visible: ${props.visible}`);
         if (dialogRef.current) {
-            if (props.visible) {
+            if (props.visible && !dialogRef.current.open) {
                 dialogRef.current.showModal();
             } else {
                 dialogRef.current.close();
@@ -27,9 +28,9 @@ const Modal = (props: ModalProps) => {
 
     return document ? createPortal(
         <dialog className={ModalStyle.modal} ref={dialogRef} onCancel={() => props.setVisible()}>
-            <PopupBackdrop>
+            <div className={ModalStyle.backdrop}>
                 {props.children}
-            </PopupBackdrop>
+            </div>
         </dialog>
         , document.body) : null;
 };

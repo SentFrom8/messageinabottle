@@ -10,7 +10,6 @@
 
 .mainarea * {
     font-family: var(--font-main), 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.5rem;
 }
 
 .header {
@@ -18,12 +17,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 50%;
-    gap: 5px
+    width: 40%;
+    gap: 5px;
 }
 
 .header p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .logo {
@@ -49,6 +48,10 @@
     gap: 30px;
 }
 
+.main * {
+    font-size: 1.5rem;
+}
+
 .options {
     width: 100%;
     display: flex;
@@ -60,4 +63,29 @@
     text-decoration: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 3px;
+}
+
+.option {
+    position: relative;
+    display: flex;
+    gap: 5px;
+}
+
+.option::after {
+    content: "Click on a bottle below";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-110%);
+    padding: 10px;
+    font-size: 1rem;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.option:hover::after {
+    opacity: 1;
 }

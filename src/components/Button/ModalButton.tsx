@@ -6,11 +6,11 @@ import InputArea from "../Message/InputArea";
 import Modal from "../Modal/Modal";
 import PaperInkSvg from "../SVGComponents/PaperInkSvg";
 
-type PopupButtonProps = {
+type ModalButtonProps = {
     children?: ReactNode,
 }
 
-const PopupButton = (props: PopupButtonProps) => {
+const ModalButton = (props: ModalButtonProps) => {
 
     const [visible, setVisible] = useState(false);
 
@@ -23,11 +23,11 @@ const PopupButton = (props: PopupButtonProps) => {
                 {props.children}
                 <PaperInkSvg />
             </button>
-            <Modal visible={visible} setVisible={() => setVisible(false)}>
+            <Modal visible={visible} setVisible={() => setVisible(false)} name="Popup button modal">
                 <InputArea visible={visible} setVisible={setVisible}/>
             </Modal>
         </>
     );
 };
 
-export default PopupButton;
+export default ModalButton;

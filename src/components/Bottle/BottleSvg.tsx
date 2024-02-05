@@ -68,6 +68,7 @@ const BottleSvg = ({ angle, flip, duration, ...props }: BottleSvgProps) => {
                 exit={{ y: 100, opacity: 0, transition: { duration: 1 } }}
 
                 whileTap={{}}
+                tabIndex={1}
 
                 onMouseEnter={() => setMouseTouched(true)}
                 onMouseLeave={() => setMouseTouched(false)}

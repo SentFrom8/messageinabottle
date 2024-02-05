@@ -27,7 +27,7 @@ const TemporaryMessage = (props: TemporaryMessageProps) => {
     
 
     return (
-        <Modal visible={visible} setVisible={setVisible}>
+        <Modal visible={visible} setVisible={setVisible} name="Temporary message modal">
             <Parchment setVisible={setVisible}>
                 <div className={MessageStyle.text}>
                     <p>{props.text}</p>
