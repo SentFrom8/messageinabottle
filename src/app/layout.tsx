@@ -28,7 +28,7 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${karla.variable} ${veneance.variable}`}>
             <body>
-                <div>
+                <div id="portal-root">
                     {children}
                 </div>
             </body>
