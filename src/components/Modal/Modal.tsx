@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import ModalStyle from "./ModalStyle.module.css";
 import { createPortal } from "react-dom";
 
@@ -14,7 +14,6 @@ const Modal = (props: ModalProps) => {
 
     const portalRef = useRef<HTMLElement>();
     
-    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         if (dialogRef.current) {
@@ -31,7 +30,7 @@ const Modal = (props: ModalProps) => {
         if (root) {
             portalRef.current=root;
         }
-    }, [])
+    }, []);
     
 
 
