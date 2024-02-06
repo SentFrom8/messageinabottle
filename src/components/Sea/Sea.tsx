@@ -30,14 +30,20 @@ const Sea =  (props: SeaProps) => {
   
 
     useEffect(() => {
-        if (props.messages.length && !randomMessagesId.length ) {
-            setRandomMessagesId(getRatedMessages(props.messages, bottles.length, openedMessages));
+        if (props.messages.length) {
+            if (!randomMessagesId.length && props.messages.length > bottles.length ) {
+                setRandomMessagesId(getRatedMessages(props.messages, bottles.length, openedMessages));
+            }
+            if (props.messages.length < bottles.length) {
+                setRandomMessagesId(props.messages.map((message, index) => index));
+            }
         }
-
+        
         if (openedMessages.size === props.messages.length && props.messages.length !== 0) {
             setMessagesRead(true);
             setOpenedMessages(new Set());
         }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.messages, openedMessages]);
   

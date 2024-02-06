@@ -14,7 +14,8 @@
 .text p {
     font-size: var(--default-font-size);
     font-family: var(--font-handwriting), 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 700;
+    font-weight: 1000;
+    color: var(--default-text-color);
     overflow-y: auto;
     overflow-wrap: break-word;
     hyphens: auto;
@@ -26,6 +27,10 @@
     justify-content: space-between;
     align-items: center;
     color: var(--faded-text-color);
+    font-size: var(--small-font-size);
+    font-family: var(--font-handwriting), 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 1000;
+    color: var(--default-text-color);
 }
 
 .formInfo {

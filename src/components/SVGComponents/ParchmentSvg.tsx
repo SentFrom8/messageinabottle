@@ -22,14 +22,15 @@ const ParchmentSvg = ({ uniqueId, ...props }: ParchmentSvgProps) => (
         <defs>
             <linearGradient
                 id={uniqueId + "_paint0_linear_66_4"}
-                x1={-479.679}
-                y1={784.161}
-                x2={3297.68}
-                y2={789.387}
+                x1={24.873}
+                x2={774.05}
+                y1={190.72}
+                y2={191.76}
+                gradientTransform="matrix(1.334 0 0 1.334 -160.36 -47.217)"
                 gradientUnits="userSpaceOnUse"
             >
-                <stop stopColor="#A5640D" />
-                <stop offset={1} stopColor="#DE9C0D" />
+                <stop stopColor="#a2602c" offset={0} />
+                <stop stopColor="#d5975f" offset={1} />
             </linearGradient>
         </defs>
     </svg>

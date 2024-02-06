@@ -11,7 +11,7 @@ export default function Home() {
         <div className={MainAreaStyle.mainarea}>
             <div className={MainAreaStyle.header}>
                 <Image 
-                    src={"LogoOptimized.svg"} 
+                    src={"LogoOptimizedNicer.svg"} 
                     alt="message in a bottle logo" 
                     width={0}
                     height={0}
