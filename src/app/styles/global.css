@@ -1,7 +1,8 @@
 :root {
   --faded-text-color: #5C4033;
   --default-font-size: 1.5rem;
-  --small-font-size: 1.25rem
+  --small-font-size: 1.25rem;
+  --smaller-font-size: 1rem;
 }
 
 * {
@@ -16,27 +17,31 @@ body {
 @media (min-width: 2400px) {
   :root {
       --default-font-size: 2.25rem;
-      --small-font-size: 1.75rem
+      --small-font-size: 1.75rem;
+      --smaller-font-size: 1.25rem;
   }
 }
 
 @media (min-width: 3000px) {
   :root {
       --default-font-size: 3rem;
-      --small-font-size: 2.25rem
+      --small-font-size: 2.25rem;
+      --smaller-font-size: 1.75rem;
   }
 }
 
 @media (max-width: 600px) {
   :root {
       --default-font-size: 1.25rem;
-      --small-font-size: 0.75rem
+      --small-font-size: 0.75rem;
+      --smaller-font-size: 0.65rem;
   }
 }
 
 @media (max-width: 300px) {
   :root {
       --default-font-size: 1rem;
-      --small-font-size: 0.75rem
+      --small-font-size: 0.75rem;
+      --smaller-font-size: 0.65rem;
   }
 }

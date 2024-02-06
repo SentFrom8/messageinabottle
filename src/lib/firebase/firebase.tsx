@@ -19,6 +19,7 @@ export const firebaseConfig = {
 
 
 export const app = initializeApp(firebaseConfig);
+export const analytics = getAnalytics(app);
 export const db = getFirestore(app);
 export const messagesCollection = collection(db, "messages");
 export const orderedQuery = query(messagesCollection, orderBy("date", "asc"));

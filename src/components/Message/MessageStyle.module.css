@@ -34,7 +34,7 @@
 }
 
 .formInfo * {
-    font-size: var(--small-font-size);
+    font-size: var(--smaller-font-size);
 }
 
 .textAreaContainer {
