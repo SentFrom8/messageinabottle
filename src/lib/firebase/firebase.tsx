@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
-// eslint-disable-next-line no-unused-vars
-import { getAnalytics } from "firebase/analytics";
+//import { getAnalytics } from "firebase/analytics";
 import { collection, getFirestore, orderBy, query } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,7 +18,7 @@ export const firebaseConfig = {
 
 
 export const app = initializeApp(firebaseConfig);
-export const analytics = getAnalytics(app);
+//export const analytics = getAnalytics(app);
 export const db = getFirestore(app);
 export const messagesCollection = collection(db, "messages");
 export const orderedQuery = query(messagesCollection, orderBy("date", "asc"));
