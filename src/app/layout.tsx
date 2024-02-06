@@ -18,6 +18,7 @@ const veneance = Vengeance({
 
 export const metadata: Metadata = {
     title: "Message in a Bottle!",
+    description: "Share your message with people all across the world and enjoy the messages from others!",
 };
 
 export default function RootLayout({

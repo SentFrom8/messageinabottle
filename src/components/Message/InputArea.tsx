@@ -38,10 +38,6 @@ const InputArea = (props: InputAreaProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [formState]);
 
-    useEffect(() => {
-        console.log("Success changed: "+ success);
-
-    }, [success]);
     return (
         <Parchment setVisible={props.setVisible}>
             <form ref={formRef} className={MessageStyle.text} action={formAction}>

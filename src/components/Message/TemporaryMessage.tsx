@@ -10,17 +10,21 @@ type TemporaryMessageProps = {
     onExpire?: Function,
 }
 
-const TemporaryMessage = (props: TemporaryMessageProps) => {
+const TemporaryMessage = (props: TemporaryMessageProps) => { 
 
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             setVisible(false);
             if (props.onExpire) {
                 props.onExpire();
             }
         }, props.duration);
+
+        return () => {
+            clearTimeout(timeout);
+        };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

@@ -2,14 +2,14 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: 700px;
+    width: clamp(35%, 700px, 90%);
 }
 
 .closeButton {
     position: absolute;
     top: 5%;
     right: 5%;
-    font-size: 1.5rem;
+    font-size: var(--default-font-size);
     border: none;
     padding: 0;
     background-color: transparent;

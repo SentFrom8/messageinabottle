@@ -12,7 +12,7 @@
 }
 
 .text p {
-    font-size: 1.7rem;
+    font-size: var(--default-font-size);
     font-family: var(--font-handwriting), 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 700;
     overflow-y: auto;
@@ -23,7 +23,6 @@
 .footer {
     width: 100%;
     display: flex;
-    font-size: 1.5rem;
     justify-content: space-between;
     align-items: center;
     color: var(--faded-text-color);
@@ -32,6 +31,10 @@
 .formInfo {
     display: flex;
     justify-content: space-between;
+}
+
+.formInfo * {
+    font-size: var(--small-font-size);
 }
 
 .textAreaContainer {
