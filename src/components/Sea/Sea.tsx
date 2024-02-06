@@ -34,7 +34,7 @@ const Sea =  (props: SeaProps) => {
             if (!randomMessagesId.length && props.messages.length > bottles.length ) {
                 setRandomMessagesId(getRatedMessages(props.messages, bottles.length, openedMessages));
             }
-            if (props.messages.length < bottles.length) {
+            if (props.messages.length <= bottles.length) {
                 setRandomMessagesId(props.messages.map((message, index) => index));
             }
         }

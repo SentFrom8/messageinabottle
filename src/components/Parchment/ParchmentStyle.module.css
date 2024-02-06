@@ -7,7 +7,7 @@
 
 .closeButton {
     position: absolute;
-    top: 5%;
+    top: 3.5%;
     right: 5%;
     font-size: var(--default-font-size);
     border: none;

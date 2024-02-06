@@ -2,7 +2,7 @@ import { BottleMessage } from "@/lib/utils/types";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RatingStyle from "./RatingStyle.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { updateMessage } from "@/lib/utils/actions";
 
 type RatingProps = {
@@ -55,12 +55,16 @@ const Rating = (props: RatingProps) => {
         const updateResult = await updateMessage({ ...props.message, likes: likes, dislikes: dislikes });
         if (updateResult) {
             setRating(unrated ? "unrated" : rate);
-        } else {
-            setLikesOptimistic(props.message.likes);
-            setDislikesOptimistic(props.message.dislikes);
         }
         setPending(false);
     };
+
+    useEffect(() => {
+        setLikesOptimistic(props.message.likes);
+        setDislikesOptimistic(props.message.dislikes);
+    
+    }, [props.message]);
+    
 
     return (
         <div className={RatingStyle.rating}>
