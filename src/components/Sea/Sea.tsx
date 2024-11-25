@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Bottle from "../Bottle/Bottle";
-import UpperWaveSvg from "./UpperWaveSvg";
-import LowerWaveSvg from "./LowerWaveSvg";
+import UpperWaveSvg from "../SVGComponents/UpperWaveSvg";
+import LowerWaveSvg from "../SVGComponents/LowerWaveSvg";
 import { BottleMessage } from "@/lib/utils/types";
 import { getRatedMessages } from "@/lib/utils/arrayOperations";
 import RefreshButtonSvg from "../SVGComponents/RefreshButtonSvg";
-import SeaSvg from "./SeaSvg";
+import SeaSvg from "../SVGComponents/SeaSvg";
+import IslandSvg from "../SVGComponents/IslandSvg";
 import TemporaryMessage from "../Message/TemporaryMessage";
+import HighestWaveSvg from "../SVGComponents/HighestWaveSvg";
+import WavesSvg from "../SVGComponents/WavesSvg";
+import SeaSvgTest from "../SVGComponents/SeaSvgTest";
+import useOrientation from "@/hooks/useOrientation";
+import SeaMobileSvg from "../SVGComponents/SeaMobileSvg";
 
 type SeaProps = {
   messages: BottleMessage[]
@@ -16,10 +22,10 @@ const Sea =  (props: SeaProps) => {
 
     // eslint-disable-next-line no-unused-vars
     const [bottles, setBottles] = useState([
-        { width: 100, x: 146, y: -150, angle: 5, duration: 2, flip: true },
-        { width: 100, x: 801, y: -100, angle: -10, duration: 1.9, flip: true },
-        { width: 100, x: 385, y: 50, angle: 0, duration: 1.8, flip: false },
-        { width: 100, x: 1013, y: 70, angle: -11, duration: 2.1, flip: false }
+        { width: 100, x: 146, y: 50, angle: 5, duration: 2, flip: true, wave: 1 },
+        { width: 100, x: 801, y: 70, angle: -10, duration: 1.9, flip: true, wave: 1 },
+        { width: 100, x: 385, y: 200, angle: 0, duration: 1.8, flip: false, wave: 2 },
+        { width: 100, x: 1013, y: 170, angle: -11, duration: 2.1, flip: false, wave: 2 }
     ]);
 
     const [randomMessagesId, setRandomMessagesId] = useState<number[]>([]);
@@ -28,6 +34,9 @@ const Sea =  (props: SeaProps) => {
 
     const [messagesRead, setMessagesRead] = useState(false);
   
+    const orientation = useOrientation();
+
+    const SeaOrientationWrapper = orientation.includes("landscape") ? SeaSvgTest : SeaMobileSvg;
 
     useEffect(() => {
         if (props.messages.length) {
@@ -46,31 +55,21 @@ const Sea =  (props: SeaProps) => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.messages, openedMessages]);
+
   
     //getRatedMessages should take the length of the bottle array
-    return (<>
-        <SeaSvg>
-            {randomMessagesId.length ? <>
-                <UpperWaveSvg>
-                    <Bottle {...bottles[0]} message={props.messages[randomMessagesId[0]]} setOpened={setOpenedMessages} />
-                    <Bottle {...bottles[1]} message={props.messages[randomMessagesId[1]]} setOpened={setOpenedMessages} />
-                </UpperWaveSvg>
-
-                <LowerWaveSvg>
-                    <Bottle {...bottles[2]} message={props.messages[randomMessagesId[2]]} setOpened={setOpenedMessages} />
-                    <Bottle {...bottles[3]} message={props.messages[randomMessagesId[3]]} setOpened={setOpenedMessages} />
-                </LowerWaveSvg>
-            </> : <>
-                <UpperWaveSvg />
-                <LowerWaveSvg />
-            </>}
-            <RefreshButtonSvg
-                onClick={() => (setRandomMessagesId(getRatedMessages(props.messages, 4, openedMessages)))}
-                onKeyUp={e => {if (e.key === "Enter") {setRandomMessagesId(getRatedMessages(props.messages, 4, openedMessages));}}}
-            />
-        </SeaSvg>
-        {messagesRead && <TemporaryMessage text="Congratulations! You reached the last message. Messages will now repeat" duration={3000} onExpire={() => setMessagesRead(false)}/>}
-    </>
+    return (
+        <>
+            <SeaOrientationWrapper bottles={bottles}>
+                <RefreshButtonSvg
+                    onClick={() => (setRandomMessagesId(getRatedMessages(props.messages, 4, openedMessages)))}
+                    onKeyUp={e => {if (e.key === "Enter") {setRandomMessagesId(getRatedMessages(props.messages, 4, openedMessages));}}}
+                    x={"50%"}
+                    y={"40%"}
+                />
+            </SeaOrientationWrapper>
+            {messagesRead && <TemporaryMessage text="Congratulations! You reached the last message. Messages will now repeat" duration={3000} onExpire={() => setMessagesRead(false)}/>}
+        </>
     );
 };
 

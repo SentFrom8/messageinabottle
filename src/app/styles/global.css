@@ -1,6 +1,8 @@
 :root {
   --default-text-color: rgba(0,0,0,0.8);
   --faded-text-color: #5C4033;
+  --largest-font-size: 3.5rem;
+  --large-font-size: 2rem;
   --default-font-size: 1.5rem;
   --small-font-size: 1.25rem;
   --smaller-font-size: 1rem;
@@ -12,37 +14,5 @@
 }
 
 body {
-  background-color: #ebd5b3;
-}
-
-@media (min-width: 2400px) {
-  :root {
-      --default-font-size: 2.25rem;
-      --small-font-size: 1.75rem;
-      --smaller-font-size: 1.25rem;
-  }
-}
-
-@media (min-width: 3000px) {
-  :root {
-      --default-font-size: 3rem;
-      --small-font-size: 2.25rem;
-      --smaller-font-size: 1.75rem;
-  }
-}
-
-@media (max-width: 600px) {
-  :root {
-      --default-font-size: 1rem;
-      --small-font-size: 0.85rem;
-      --smaller-font-size: 0.65rem;
-  }
-}
-
-@media (max-width: 300px) {
-  :root {
-      --default-font-size: 1.1rem;
-      --small-font-size: 0.75rem;
-      --smaller-font-size: 0.65rem;
-  }
+  background: linear-gradient(-26.034deg, #8ABFEE 0%, #E8D97C 100%);
 }

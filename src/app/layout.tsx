@@ -1,16 +1,24 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./styles/global.css";
 import { ReactNode } from "react";
-import { Karla } from "next/font/google";
+import { Island_Moments, Kranky } from "next/font/google";
 import Vengeance from "next/font/local";
 
-const karla = Karla({
+const island_moments = Island_Moments({
+    weight: "400",
+    subsets: ["latin"],
+    variable: "--font-cursive",
+    display: "swap",
+});
+
+const kranky = Kranky({
+    weight: "400",
     subsets: ["latin"],
     variable: "--font-main",
     display: "swap",
 });
 
-const veneance = Vengeance({
+const vengeance = Vengeance({
     src: "./fonts/Vengeance.ttf",
     variable: "--font-handwriting",
     display: "swap",
@@ -21,13 +29,20 @@ export const metadata: Metadata = {
     description: "Share your message with people all across the world and enjoy the messages from others!",
 };
 
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+};
+
 export default function RootLayout({
     children,
 }: {
   children: ReactNode
 }) {
     return (
-        <html lang="en" className={`${karla.variable} ${veneance.variable}`}>
+        <html lang="en" className={`${kranky.variable} ${vengeance.variable} ${island_moments.variable}`}>
             <body>
                 <div id="portal-root">
                     {children}

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { BottleSvgProps } from "./BottleSvg";
+import { BottleSvgProps } from "../SVGComponents/BottleSvg";
 import Message from "../Message/Message";
-import BottleSvg from "./BottleSvg";
+import BottleSvg from "../SVGComponents/BottleSvg";
 import Modal from "../Modal/Modal";
 import { BottleMessage } from "@/lib/utils/types";
 import { AnimatePresence } from "framer-motion";
