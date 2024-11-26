@@ -4,8 +4,10 @@ import SeaDataProvider from "../components/Sea/SeaDataProvider";
 
 export default function Home() {
     /* 
-    Fix zoom 
-    Fix background
+    -Fix zoom
+    -Fix background
+    -Fix window not defined
+    -Clean console logs
     */
     return (
         <div className={MainAreaStyle.mainarea}>

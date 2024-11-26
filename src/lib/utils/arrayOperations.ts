@@ -2,7 +2,7 @@ import { DocumentData, QuerySnapshot } from "firebase/firestore";
 import { BottleMessage } from "./types";
 
 const getRandomElements = <T>(array: T[], messageAmount: number) : T[] => {
-    if (!(messageAmount > 0 && Number.isInteger(messageAmount))) {
+    if (messageAmount < 0 || !Number.isInteger(messageAmount)) {
         return [];
     }
     for (let i = array.length - 1; i > 0; i--) {

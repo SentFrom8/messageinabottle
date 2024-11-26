@@ -21,11 +21,12 @@ type SeaProps = {
 const Sea =  (props: SeaProps) => {
 
     // eslint-disable-next-line no-unused-vars
+    //write a generator to push out messages
     const [bottles, setBottles] = useState([
-        { width: 100, x: 146, y: 50, angle: 5, duration: 2, flip: true, wave: 1 },
-        { width: 100, x: 801, y: 70, angle: -10, duration: 1.9, flip: true, wave: 1 },
-        { width: 100, x: 385, y: 200, angle: 0, duration: 1.8, flip: false, wave: 2 },
-        { width: 100, x: 1013, y: 170, angle: -11, duration: 2.1, flip: false, wave: 2 }
+        { width: 100, x: 146, y: 50, angle: 5, duration: 2, flip: true, wave: 2 },
+        { width: 100, x: 801, y: 70, angle: -10, duration: 1.9, flip: true, wave: 2 },
+        { width: 100, x: 385, y: 200, angle: 0, duration: 1.8, flip: false, wave: 1 },
+        { width: 100, x: 1013, y: 170, angle: -11, duration: 2.1, flip: false, wave: 1 }
     ]);
 
     const [randomMessagesId, setRandomMessagesId] = useState<number[]>([]);
@@ -60,7 +61,24 @@ const Sea =  (props: SeaProps) => {
     //getRatedMessages should take the length of the bottle array
     return (
         <>
-            <SeaOrientationWrapper bottles={bottles}>
+            <SeaOrientationWrapper
+                wave1={bottles.filter(bottle => bottle.wave == 1).map((bottle, index) => 
+                    <Bottle 
+                        message={props.messages[index]} 
+                        setOpened={setOpenedMessages} 
+                        key={index} 
+                        {...bottle}
+                    />
+                )}
+                wave2={bottles.filter(bottle => bottle.wave == 2).map((bottle, index) => 
+                    <Bottle 
+                        message={props.messages[index]}
+                        setOpened={setOpenedMessages} 
+                        key={index} 
+                        {...bottle}
+                    />
+                )}
+            >
                 <RefreshButtonSvg
                     onClick={() => (setRandomMessagesId(getRatedMessages(props.messages, 4, openedMessages)))}
                     onKeyUp={e => {if (e.key === "Enter") {setRandomMessagesId(getRatedMessages(props.messages, 4, openedMessages));}}}

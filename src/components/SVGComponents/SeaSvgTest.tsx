@@ -1,12 +1,13 @@
-import * as React from "react";
 import { SeaSvgProps } from "@/lib/utils/types";
 import Bottle from "../Bottle/Bottle";
 
-const SeaSvgTest = ({ children, bottles, ...props }: SeaSvgProps) => (
-    <svg
+const SeaSvgTest = ({ wave1, wave2, children, ...props }: SeaSvgProps) => {
+
+    return <svg
         viewBox="0 0 2404 1019"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        pointerEvents={"None"}
         {...props}
     >
         <g id="Sea" clipPath="url(#clip0_244_294)">
@@ -312,6 +313,7 @@ const SeaSvgTest = ({ children, bottles, ...props }: SeaSvgProps) => (
                         fillOpacity={0.7}
                     />
                 </g>
+                {wave2 && wave2}
                 <g id="Wave2">
                     <path
                         id="Wave2_left"
@@ -326,6 +328,7 @@ const SeaSvgTest = ({ children, bottles, ...props }: SeaSvgProps) => (
                         fillOpacity={0.7}
                     />
                 </g>
+                {wave1 && wave1}
                 <g id="Wave1">
                     <path
                         id="Wave1_right"
@@ -356,6 +359,6 @@ const SeaSvgTest = ({ children, bottles, ...props }: SeaSvgProps) => (
                 />
             </clipPath>
         </defs>
-    </svg>
-);
+    </svg>;
+};
 export default SeaSvgTest;

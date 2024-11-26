@@ -38,6 +38,7 @@ export type Bottle = {
 }
 
 export type SeaSvgProps = {
+  wave1?: ReactNode,
+  wave2?: ReactNode,
   children?: ReactNode,
-  bottles: Bottle[],
 } & SVGProps<SVGSVGElement> & DOMAttributes<SVGSVGElement>
