@@ -1,5 +1,4 @@
 import { SeaSvgProps } from "@/lib/utils/types";
-import Bottle from "../Bottle/Bottle";
 
 const SeaSvgTest = ({ wave1, wave2, children, ...props }: SeaSvgProps) => {
 
@@ -361,4 +360,5 @@ const SeaSvgTest = ({ wave1, wave2, children, ...props }: SeaSvgProps) => {
         </defs>
     </svg>;
 };
+
 export default SeaSvgTest;

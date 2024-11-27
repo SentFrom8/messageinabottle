@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Bottle from "../Bottle/Bottle";
-import UpperWaveSvg from "../SVGComponents/UpperWaveSvg";
-import LowerWaveSvg from "../SVGComponents/LowerWaveSvg";
 import { BottleMessage } from "@/lib/utils/types";
 import { getRatedMessages } from "@/lib/utils/arrayOperations";
 import RefreshButtonSvg from "../SVGComponents/RefreshButtonSvg";
-import SeaSvg from "../SVGComponents/SeaSvg";
-import IslandSvg from "../SVGComponents/IslandSvg";
 import TemporaryMessage from "../Message/TemporaryMessage";
-import HighestWaveSvg from "../SVGComponents/HighestWaveSvg";
-import WavesSvg from "../SVGComponents/WavesSvg";
 import SeaSvgTest from "../SVGComponents/SeaSvgTest";
 import useOrientation from "@/hooks/useOrientation";
 import SeaMobileSvg from "../SVGComponents/SeaMobileSvg";
@@ -20,8 +14,8 @@ type SeaProps = {
 
 const Sea =  (props: SeaProps) => {
 
-    // eslint-disable-next-line no-unused-vars
     //write a generator to push out messages
+    // eslint-disable-next-line no-unused-vars
     const [bottles, setBottles] = useState([
         { width: 100, x: 146, y: 50, angle: 5, duration: 2, flip: true, wave: 2 },
         { width: 100, x: 801, y: 70, angle: -10, duration: 1.9, flip: true, wave: 2 },
@@ -64,9 +58,9 @@ const Sea =  (props: SeaProps) => {
             <SeaOrientationWrapper
                 wave1={bottles.filter(bottle => bottle.wave == 1).map((bottle, index) => 
                     <Bottle 
-                        message={props.messages[index]} 
+                        message={props.messages[index]}
                         setOpened={setOpenedMessages} 
-                        key={index} 
+                        key={index}
                         {...bottle}
                     />
                 )}

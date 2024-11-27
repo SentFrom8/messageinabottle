@@ -3,10 +3,12 @@ import { DOMAttributes, SVGProps } from "react";
 
 const RefreshButtonSvg = (props: SVGProps<SVGSVGElement> & DOMAttributes<SVGSVGElement>) => (
     <svg
-        viewBox="0 0 56 56"
+        viewBox="28 0 56 56"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         width={56}
+        pointerEvents={"All"}
+        overflow={"visible"}
         {...props}
     >
         <motion.g 
