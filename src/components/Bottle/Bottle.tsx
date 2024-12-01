@@ -8,31 +8,33 @@ import { AnimatePresence } from "framer-motion";
 
 
 export type BottleProps = {
-    message: BottleMessage,
     setOpened: Dispatch<SetStateAction<Set<string>>>,
+    message: BottleMessage | undefined
 } & BottleSvgProps
 
 
-const Bottle = ({ message, setOpened, ...props }: BottleProps) => {
+const Bottle = ({ setOpened, ...props }: BottleProps) => {
     
     const [messageVisible, setMessageVisible] = useState(false);
 
     const tapEvent = () => {
-        setMessageVisible(true);
-        setOpened((prevState) => new Set(prevState.add(message.id)));
+        if (props.message) {
+            setMessageVisible(true);
+            setOpened((prevState) => new Set(prevState.add(props.message!.id)));
+        }
     };
     
     
 
     return (
-        message && <>
+        props.message && <>
             <AnimatePresence mode="wait">
                 <BottleSvg {...props} 
                     onClick={tapEvent}
-                    key={message.id} onKeyUp={e => {if (e.key === "Enter") {tapEvent();}}}/>
+                    key={props.message.id} onKeyUp={e => {if (e.key === "Enter") {tapEvent();}}}/>
             </AnimatePresence>
             <Modal visible={messageVisible} setVisible={setMessageVisible}>
-                <Message setVisible={setMessageVisible} message={message}/>
+                <Message setVisible={setMessageVisible} message={props.message}/>
             </Modal>
         </>
     );

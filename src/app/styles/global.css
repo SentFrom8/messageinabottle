@@ -4,7 +4,7 @@
   --largest-font-size: 3.5rem;
   --large-font-size: 2rem;
   --default-font-size: 1.5rem;
-  --small-font-size: 1.25rem;
+  --small-font-size: 1.35rem;
   --smaller-font-size: 1rem;
 }
 
@@ -15,4 +15,7 @@
 
 body {
   background: linear-gradient(-26.034deg, #8ABFEE 0%, #E8D97C 100%);
+  min-height: 100svh;
+  min-height: 100vh;
+  background-repeat: no-repeat;
 }

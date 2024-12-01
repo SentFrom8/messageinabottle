@@ -6,16 +6,16 @@
 }
 
 .submitButton {
-    background-color: #522e1b;
+    background-color: #5f3417e5;
     border: none;
-    padding: 2px 4px;
+    padding: 4px 8px;
     border-radius: 5px;
-    border: 1.5px solid var(--default-text-color);
     display: inline;
     width: min-content;
     font-size: var(--small-font-size);
     color: #b8935e;
     text-wrap: nowrap;
+    cursor: pointer;
 }
 
 .button:hover {

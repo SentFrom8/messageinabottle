@@ -31,11 +31,11 @@ const Rating = (props: RatingProps) => {
         
         let unrated = false;
         if (rating === "disliked") {
-            dislikes -= 1;
+            dislikes --;
         }
 
         if (rating === "liked") {
-            likes -= 1;
+            likes --;
         }
 
         switch (rate) {
@@ -55,6 +55,9 @@ const Rating = (props: RatingProps) => {
         const updateResult = await updateMessage({ ...props.message, likes: likes, dislikes: dislikes });
         if (updateResult) {
             setRating(unrated ? "unrated" : rate);
+        } else {
+            setLikesOptimistic(props.message.likes);
+            setDislikesOptimistic(props.message.dislikes);
         }
         setPending(false);
     };
