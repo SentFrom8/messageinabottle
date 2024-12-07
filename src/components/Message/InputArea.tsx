@@ -1,8 +1,7 @@
 import Parchment from "../Parchment/Parchment";
 import { submitMessage } from "@/lib/utils/actions";
 import { FormResult } from "@/lib/utils/types";
-import { useState, useRef, useEffect } from "react";
-import { useFormState } from "react-dom";
+import { useState, useRef, useEffect, useActionState } from "react";
 import SubmitButton from "../Button/SubmitButton";
 import TextArea from "../TextArea/TextArea";
 import TemporaryMessage from "./TemporaryMessage";
@@ -23,7 +22,7 @@ const InputArea = (props: InputAreaProps) => {
 
     const formRef = useRef<HTMLFormElement>(null);
 
-    const [formState, formAction] = useFormState(submitMessage, {
+    const [formState, formAction] = useActionState(submitMessage, {
         text: "",
         success: false,
         error: undefined

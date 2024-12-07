@@ -1,19 +1,17 @@
 "use server";
 
-import { Timestamp, addDoc, getDocs, doc, updateDoc } from "firebase/firestore";
-import { db } from "../firebase/firebase";
 import { queryToMessage } from "./arrayOperations";
 import { BottleMessage, FormResult } from "./types";
-import { messagesCollection } from "../firebase/firebase";
+import { adminMessagesCollection } from "../firebase/firebaseAdmin";
+import { Timestamp } from "firebase-admin/firestore";
 
 const regex = /^[a-zA-Z0-9\s!@#$%^&*()_+=|{}\\[\]:;<>,.'"`~?~\\/-]+$/;
-
 
 export async function submitMessage (prevState: FormResult, formData: FormData) {
 
     const text = formData.get("messageInput") as string;
 
-    if (!(text && regex.test(text))) {
+    if (!text || !regex.test(text)) {
         return {
             text: "",
             success: false,
@@ -21,16 +19,16 @@ export async function submitMessage (prevState: FormResult, formData: FormData) 
         };
     }
 
-    const message = { date: Timestamp.fromDate(new Date()), message: text, likes: 0, dislikes: 0 };
+    const message = { date: Timestamp.now(), message: text, likes: 0, dislikes: 0 };
     try {
-        await addDoc(messagesCollection, message);
+        await adminMessagesCollection.add(message);
         return {
             text: "",
             success: true,
             error: undefined
         };
-    } catch (error) {
-        console.log(error);
+    } catch (err) {
+        Object.getOwnPropertyNames(err).forEach(property => console.log((err as Error)[property as keyof Error]));
         return {
             text: text,
             success: false,
@@ -39,25 +37,23 @@ export async function submitMessage (prevState: FormResult, formData: FormData) 
     }  
 }
 
-export async function fetchMessages()  {
+export async function fetchOrderedMessages()  {
     try {
-        const data = await getDocs(messagesCollection);
+        const data = await adminMessagesCollection.orderBy("date").get();
         return queryToMessage(data);
-    } catch (error) {
-        console.log(error);
-    }
-    
+    } catch (err) {
+        Object.getOwnPropertyNames(err).forEach(property => console.log((err as Error)[property as keyof Error]));
+        return false;
+    }   
 }
 
 export async function updateMessage(updatedDoc: BottleMessage) {
-    const timestampDate = { ...updatedDoc, date: new Timestamp(updatedDoc.date.seconds, updatedDoc.date.nanoseconds) };
-    const { id, ...data } = timestampDate;
-    const docRef = doc(db, "messages", id);
+    const { id, likes, dislikes } = updatedDoc;
     try {
-        await updateDoc(docRef, data);
+        await adminMessagesCollection.doc(id).update({ likes, dislikes });
         return true;
     } catch (err) {
-        console.log(err);
+        Object.getOwnPropertyNames(err).forEach(property => console.log((err as Error)[property as keyof Error]));
         return false;
     }
 }

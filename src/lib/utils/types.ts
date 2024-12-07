@@ -27,7 +27,7 @@ export type TimeObject = {
   seconds: number,
 }
 
-export type Bottle = {
+export type BottleType = {
   width: number,
   x: number,
   y: number,
@@ -35,6 +35,8 @@ export type Bottle = {
   duration: number,
   flip: boolean,
   wave: number,
+  message: BottleMessage | undefined,
+  id: string
 }
 
 export type SeaSvgProps = {

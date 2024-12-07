@@ -8,6 +8,7 @@ const SeaMobileSvg = ({ wave1, wave2, children, ...props }: SeaSvgProps) => (
         viewBox="0 0 1080 1281"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        pointerEvents={"None"}
         {...props}
     >
         <g id="Sea_mobile">

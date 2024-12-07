@@ -27,11 +27,11 @@ const Bottle = ({ setOpened, ...props }: BottleProps) => {
     
 
     return (
-        props.message && <>
+        <>
             <AnimatePresence mode="wait">
-                <BottleSvg {...props} 
+                {props.message && <BottleSvg {...props} 
                     onClick={tapEvent}
-                    key={props.message.id} onKeyUp={e => {if (e.key === "Enter") {tapEvent();}}}/>
+                    key={props.message.id} onKeyUp={e => {if (e.key === "Enter") {tapEvent();}}}/>}
             </AnimatePresence>
             <Modal visible={messageVisible} setVisible={setMessageVisible}>
                 <Message setVisible={setMessageVisible} message={props.message}/>

@@ -1,9 +1,9 @@
+import { updateMessage } from "@/lib/utils/actions";
 import { BottleMessage } from "@/lib/utils/types";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RatingStyle from "./RatingStyle.module.css";
 import { useEffect, useState } from "react";
-import { updateMessage } from "@/lib/utils/actions";
 
 type RatingProps = {
     message: BottleMessage

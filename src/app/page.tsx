@@ -1,11 +1,12 @@
+import Link from "next/link";
 import MainAreaStyle from "./styles/MainAreaStyle.module.css";
 import PopupButton from "../components/Button/ModalButton";
 import SeaDataProvider from "../components/Sea/SeaDataProvider";
 import SwallowsSvg from "@/components/SVGComponents/SwallowsSvg";
 
-export default function Home() {
+const Home = () => {
     /* 
-    -Clean console logs
+    -ensure messages can't be deleted or updated wrongly
     */
     return (
         <div className={MainAreaStyle.mainArea}>
@@ -13,7 +14,7 @@ export default function Home() {
             <div className={MainAreaStyle.contentWrapper}>
                 <div />
                 <div className={MainAreaStyle.header}>
-                    <h1>Message In a Bottle</h1>
+                    <Link href={"/"}><h1>Message In a Bottle</h1></Link>
                     <p>Because life is too short for unread messages!</p>
                 </div>
                 <div className={MainAreaStyle.main}>
@@ -22,9 +23,11 @@ export default function Home() {
                 </div>
             </div>
             <div className={MainAreaStyle.footer}>
-                <p>To see everyone who contributed, click <a href="#"> here</a></p>
+                <p><Link href={"/credits"}>Acknowledgements and contributors</Link></p>
             </div>
             <p className={MainAreaStyle.fontPreload}>aaa</p>
         </div>
     );
-}
+};
+
+export default Home;

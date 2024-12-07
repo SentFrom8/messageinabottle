@@ -6,11 +6,9 @@ import { BottleMessage } from "@/lib/utils/types";
 import { onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Sea from "./Sea";
-import { fakeData } from "@/lib/utils/.fakedata";
 
 
 const SeaDataProvider = () => {
-
     const [messages, setMessages] = useState<BottleMessage[]>([]);
 
     useEffect(() => {
@@ -29,7 +27,7 @@ const SeaDataProvider = () => {
 
 
     return (
-        <Sea messages={fakeData}/>
+        <Sea messages={messages}/>
     );
 };
 
