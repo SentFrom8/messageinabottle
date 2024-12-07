@@ -6,9 +6,9 @@ import { BottleMessage } from "@/lib/utils/types";
 import RefreshButtonSvg from "../SVGComponents/RefreshButtonSvg";
 import TemporaryMessage from "../Message/TemporaryMessage";
 import SeaSvg from "../SVGComponents/SeaSvg";
-import useOrientation from "@/hooks/useOrientation";
 import SeaMobileSvg from "../SVGComponents/SeaMobileSvg";
 import useBottles from "@/hooks/useBottles";
+import { useOrientation } from "@uidotdev/usehooks";
 
 type SeaProps = {
   messages: BottleMessage[]
@@ -24,7 +24,7 @@ const Sea =  (props: SeaProps) => {
   
     const orientation = useOrientation();
 
-    const SeaOrientationWrapper = orientation.includes("landscape") ? SeaSvg : SeaMobileSvg;
+    const SeaOrientationWrapper = orientation.type.includes("landscape") ? SeaSvg : SeaMobileSvg;
 
     useEffect(() => {
         if (openedMessages.size === props.messages.length && props.messages.length !== 0) {
@@ -32,19 +32,23 @@ const Sea =  (props: SeaProps) => {
             setOpenedMessages(new Set());
         }
     }, [openedMessages, props.messages.length]);
-    
+
+    useEffect(() => {
+        console.log(orientation);
+    }, [orientation]);
+
 
     return (
         <>
             <SeaOrientationWrapper
-                wave1={(orientation.includes("landscape") ? bottles : bottlesMobile).filter(bottle => bottle.wave === 1).map(bottle => 
+                wave1={(orientation.type.includes("landscape") ? bottles : bottlesMobile).filter(bottle => bottle.wave === 1).map(bottle => 
                     <Bottle 
                         setOpened={setOpenedMessages} 
                         key={bottle.id}
                         {...bottle}
                     />
                 )}
-                wave2={(orientation.includes("landscape") ? bottles : bottlesMobile).filter(bottle => bottle.wave === 2).map(bottle => 
+                wave2={(orientation.type.includes("landscape") ? bottles : bottlesMobile).filter(bottle => bottle.wave === 2).map(bottle => 
                     <Bottle 
                         setOpened={setOpenedMessages}
                         key={bottle.id} 
