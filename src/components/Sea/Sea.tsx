@@ -5,7 +5,7 @@ import Bottle from "../Bottle/Bottle";
 import { BottleMessage } from "@/lib/utils/types";
 import RefreshButtonSvg from "../SVGComponents/RefreshButtonSvg";
 import TemporaryMessage from "../Message/TemporaryMessage";
-import SeaSvgTest from "../SVGComponents/SeaSvgTest";
+import SeaSvg from "../SVGComponents/SeaSvg";
 import useOrientation from "@/hooks/useOrientation";
 import SeaMobileSvg from "../SVGComponents/SeaMobileSvg";
 import useBottles from "@/hooks/useBottles";
@@ -24,7 +24,7 @@ const Sea =  (props: SeaProps) => {
   
     const orientation = useOrientation();
 
-    const SeaOrientationWrapper = orientation.includes("landscape") ? SeaSvgTest : SeaMobileSvg;
+    const SeaOrientationWrapper = orientation.includes("landscape") ? SeaSvg : SeaMobileSvg;
 
     useEffect(() => {
         if (openedMessages.size === props.messages.length && props.messages.length !== 0) {
