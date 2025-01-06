@@ -5,6 +5,7 @@ import { BottleMessage, FormResult } from "./types";
 import { adminMessagesCollection } from "../firebase/firebaseAdmin";
 import { Timestamp } from "firebase-admin/firestore";
 
+
 const regex = /^[a-zA-Z0-9\s!@#$%^&*()_+=|{}\\[\]:;<>,.'"`~?~\\/-]+$/;
 
 export async function submitMessage (prevState: FormResult, formData: FormData) {

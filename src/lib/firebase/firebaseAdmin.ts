@@ -1,11 +1,22 @@
-import { initializeApp, getApps } from "firebase-admin/app";
+import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
-import { getGCPCredentials } from "./gcp";
-
 
 const apps = getApps();
 
-export const adminApp = apps.length ? apps[0] : initializeApp(getGCPCredentials());
+export const adminApp = () => {
 
-export const adminDb = getFirestore(adminApp);
-export const adminMessagesCollection = adminDb.collection("messages");
+    return apps.length ? apps[0] : initializeApp({
+        credential: cert({
+            projectId: process.env.GCP_PROJECT_ID,
+            clientEmail: process.env.GCP_SERVICE_ACCOUNT_EMAIL,
+            privateKey: process.env.GCP_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+        }),
+    });
+};
+
+export const adminDb = () => {
+    console.log("adminApp ran");
+    return getFirestore(adminApp());
+};
+
+export const adminMessagesCollection = adminDb().collection("messages");

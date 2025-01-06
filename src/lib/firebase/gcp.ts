@@ -1,6 +1,6 @@
 export const getGCPCredentials = () => {
-    // for Vercel, use environment variables
-    return process.env.GCP_PRIVATE_KEY
+    console.log("function ran");
+    const test = process.env.GCP_PRIVATE_KEY
         ? {
             credentials: {
                 client_email: process.env.GCP_SERVICE_ACCOUNT_EMAIL,
@@ -8,6 +8,8 @@ export const getGCPCredentials = () => {
             },
             projectId: process.env.GCP_PROJECT_ID,
         }
-        // for local development, use gcloud CLI
+    // for local development, use gcloud CLI
         : {};
+    console.log(test);
+    return test;
 };
