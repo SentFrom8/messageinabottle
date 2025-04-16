@@ -5,9 +5,6 @@ import SeaDataProvider from "../components/Sea/SeaDataProvider";
 import SwallowsSvg from "@/components/SVGComponents/SwallowsSvg";
 
 const Home = () => {
-    /* 
-    -ensure messages can't be deleted or updated wrongly
-    */
     return (
         <div className={MainAreaStyle.mainArea}>
             <SwallowsSvg className={MainAreaStyle.swallows}/>

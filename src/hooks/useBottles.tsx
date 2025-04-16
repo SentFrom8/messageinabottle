@@ -44,14 +44,13 @@ const useBottles = (messages: BottleMessage[], openedMessages: Set<string>) => {
 
     const updateBottles = (bottles: BottleType[], messages: BottleMessage[]) => {
         return bottles.map(bottle => {
-            if (!bottle.message) {
-                return bottle;
+            if (bottle.message) {
+                const newMessage = messages.find(message => message.id === bottle.message?.id);
+                if (newMessage && JSON.stringify(bottle.message) != JSON.stringify(newMessage)) {
+                    return { ...bottle, message: newMessage };
+                }  
             }
 
-            const newMessage = messages.find(message => message.id === bottle.message?.id);
-            if (newMessage && JSON.stringify(bottle.message) != JSON.stringify(newMessage)) {
-                return { ...bottle, message: newMessage };
-            }
 
             return bottle;
         });

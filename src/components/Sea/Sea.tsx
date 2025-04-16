@@ -33,11 +33,6 @@ const Sea =  (props: SeaProps) => {
         }
     }, [openedMessages, props.messages.length]);
 
-    useEffect(() => {
-        console.log(orientation);
-    }, [orientation]);
-
-
     return (
         <>
             <SeaOrientationWrapper
